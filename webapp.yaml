@@ -1,0 +1,13 @@
+apiVersion : v1
+kind  : Pod
+metadata :
+    name : webapp-pod
+    labels :
+        component : webapp
+spec :
+    containers :
+        - name : webapp
+          image : acrpro2407.azurecr.io/webapplication2
+
+          ports :
+            - containerPort : 4000

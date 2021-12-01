@@ -1,0 +1,42 @@
+serverFiles:
+  alerts:
+    groups:
+      - name: example
+        rules:
+          - alert: InstanceDown
+            expr: up == 0
+            for: 5m
+            labels:
+              severity: page
+            annotations:
+              summary: 'Instance {{ $labels.instance }} down'
+              description: >-
+                {{ $labels.instance }} of job {{ $labels.job }} has been down
+                for more than 5 minutes.
+          - alert: APIHighRequestLatency
+            expr: 'api_http_request_latencies_second{quantile="0.5"} > 1'
+            for: 10m
+            annotations:
+              summary: 'High request latency on {{ $labels.instance }}'
+              description: >-
+                {{ $labels.instance }} has a median request latency above 1s
+                (current value: {{ $value }}s)
+          - alert: KubernetesPodCrashLooping
+            expr: increase(kube_pod_container_status_restarts_total[5m]) > 1
+            for: 2m
+            labels:
+              severity: warning
+            annotations:
+              summary: Kubernetes pod crash looping (instance {{ $labels.instance }})
+              description: "Pod {{ $labels.pod }} is crash looping\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+          - alert: HostOutOfMemory
+            expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 100
+            for: 2m
+            labels:
+                severity: warning
+            annotations:
+                summary: Host out of memory (instance {{ $labels.instance }})
+                description: "Node memory is filling up (< 10% left)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+
+          
