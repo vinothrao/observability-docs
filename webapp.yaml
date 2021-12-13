@@ -7,7 +7,6 @@ metadata :
 spec :
     containers :
         - name : webapp
-          image : acrpro2407.azurecr.io/webapplication2
-
+          image : vinothrao247/webapp5
           ports :
-            - containerPort : 4000
+            - containerPort : 80

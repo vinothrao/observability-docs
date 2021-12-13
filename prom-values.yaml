@@ -1,4 +1,4 @@
-rbac:
+ rbac:
   create: true
 
 podSecurityPolicy:
@@ -1337,12 +1337,12 @@ alertmanagerFiles:
     receivers:
       - name: default-receiver
         email_configs:
-        - to: vinothr@theproindia.com
-          from: vinothrao89@gmail.com
-          smarthost: smtp.gmail.com:587
-          auth_username: vinothrao89@gmail.com
-          auth_identity: vinothrao89@gmail.com
-          auth_password: wmdfkbuubkbmgrtw
+        - to: 
+          from: 
+          smarthost: 
+          auth_username: 
+          auth_identity: 
+          auth_password: 
         # slack_configs:
         #  - channel: '@you'
         #    send_resolved: true

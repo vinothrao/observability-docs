@@ -25,11 +25,11 @@ spec:
         image: fluent/fluentd-kubernetes-daemonset:v1-debian-elasticsearch
         env:
           - name:  FLUENT_ELASTICSEARCH_HOST
-            value: "fluentd.es.eastus2.azure.elastic-cloud.com"
+            value: "10.99.101.187" #replace this with load balance ip of elastic search
           - name:  FLUENT_ELASTICSEARCH_PORT
-            value: "9243"
+            value: "9200"
           - name: FLUENT_ELASTICSEARCH_SCHEME
-            value: "https"
+            value: "http"
           # Option to configure elasticsearch plugin with self signed certs
           # ================================================================
           - name: FLUENT_ELASTICSEARCH_SSL_VERIFY
@@ -43,7 +43,7 @@ spec:
           - name: FLUENT_ELASTICSEARCH_USER
             value: "elastic"
           - name: FLUENT_ELASTICSEARCH_PASSWORD
-            value: "LkRn3MAmBYNJPapIqqgyARhi"
+            value: "test@pro"
           # Logz.io Authentication
           # ======================
           - name: LOGZIO_TOKEN

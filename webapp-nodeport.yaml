@@ -5,11 +5,7 @@ metadata :
 spec :
 
     type : LoadBalancer
-
     ports :
-
-        - port : 5000        
- 
+        - port : 80
     selector :
-
          component : webapp
